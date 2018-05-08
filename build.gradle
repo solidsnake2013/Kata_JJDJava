@@ -1,0 +1,28 @@
+group 'com.kata.jjd'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+}
+
+task('create-dirs') {
+    doLast {
+        sourceSets*.java.srcDirs*.each { it.mkdirs() }
+        sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+    }
+}
+
+dependencies {
+    compile 'com.alibaba:fastjson:1.2.+'
+    compile 'org.jodd:jodd-core:3.6.+'
+    compile group: 'io.netty', name: 'netty-all', version: '4.1.+'
+    testCompile 'junit:junit:4.12'
+}
+
