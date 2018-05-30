@@ -36,6 +36,7 @@ public abstract class Main {
 
     /**
      * 10 进制转换到 2 进制
+     *
      * @param count
      * @return
      */
@@ -53,27 +54,42 @@ public abstract class Main {
 //        JSONArray areas = jsonObject.getJSONArray("area");
 //        List<Object> type = areas.stream().filter(v -> ((JSONObject) v).getLong("type") == 1L).collect(Collectors.toList());
 //        System.out.println(type.size());
-        System.out.println(findMissingLetter(new char[] { 'a','b','c','d','f' }));
-        System.out.println(findMissingLetter(new char[] { 'O','Q','R','S' }));
+        System.out.println(findMissingLetter(new char[]{'a', 'b', 'c', 'd', 'f'}));
+        System.out.println(findMissingLetter(new char[]{'O', 'Q', 'R', 'S'}));
 
-
+        System.out.println(spinWords("Hey wollef sroirraw"));
+        System.out.println(spinWords("This is another test"));
+        System.out.println(spinWords("This is a test"));
 
     }
 
-    public static char findMissingLetter(char[] array)
-    {
+    public static char findMissingLetter(char[] array) {
         char result = 'Z';
         char prov = array[0];
-        for(int i = 1; i<array.length; i++) {
+        for (int i = 1; i < array.length; i++) {
             char current = array[i];
-            if(prov + 1 != current) {
-                result = (char)(prov + 1);
+            if (prov + 1 != current) {
+                result = (char) (prov + 1);
                 break;
-            }else {
+            } else {
                 prov = current;
             }
         }
         return result;
     }
 
+
+    public static String spinWords(String sentence) {
+        //TODO: Code stuff here
+        StringBuilder sb = new StringBuilder();
+        for (String word : sentence.split(" ")) {
+            if (word.length() >= 5) {
+                sb.append(new StringBuilder(word).reverse().toString());
+            } else {
+                sb.append(word);
+            }
+            sb.append(" ");
+        }
+        return sb.delete(sb.length() - 1, sb.length()).toString();
+    }
 }

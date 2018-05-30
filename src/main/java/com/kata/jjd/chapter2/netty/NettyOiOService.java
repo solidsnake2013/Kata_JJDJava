@@ -85,9 +85,9 @@ public class NettyOiOService {
                 ch.pipeline().addLast("2", outputHandler);
             }
         });
-        ChannelFuture sync = serverBootstrap.bind().sync();
-        sync.channel().closeFuture().sync();
-        nioEventLoopGroup.shutdownGracefully().sync();
+        ChannelFuture sync = serverBootstrap.bind().syncUninterruptibly();
+        sync.channel().closeFuture().syncUninterruptibly();
+        nioEventLoopGroup.shutdownGracefully().syncUninterruptibly();
     }
 
 

@@ -43,9 +43,16 @@ public class SimpleCombination {
 
 
         List<List<Long>> result = new ArrayList<>();
-        calculate(arr, 5, result);
+        calculate(arr, 4, result);
         System.out.println(result.size());
         System.out.println(result);
+
+//        result = new ArrayList<>();
+//        calculate(arr, 6, result);
+//        System.out.println(result.size());
+//        System.out.println(result);
+
+        demo(arr);
 
     }
 
@@ -91,8 +98,8 @@ public class SimpleCombination {
     /**
      * @param arr        元数据
      * @param div        循环层级 (可变), 不可变层级由 indexArray.length 修饰
-     * @param results    结果集
      * @param indexArray 索引集 (索引级之所以用数组, 是因为它也代表了一个固定的循环层级).
+     * @param results    结果集
      */
     public static void calculate(Long[] arr, Integer div, Integer[] indexArray, List<List<Long>> results) {
         if (div == 0) {
@@ -101,6 +108,7 @@ public class SimpleCombination {
             results.add(result);
         } else {
             int beginIndex;
+            // 检查当前位置索引是否存在 (不存在进入起始索引分支, 存在进入传递索引分支)
             if (indexArray[indexArray.length - div] == null) {
                 // 如果是起始索引
                 // Example
@@ -121,7 +129,8 @@ public class SimpleCombination {
                 // ...
 
                 // indexArray 根据下表可以获取到对应的层级index
-                // 由于进入这个判断, 一定是已经初始化过indexArray的各个层级 (也就是说经过了起始索引阶段, 或又称之为, 完成了一次深度遍历),
+                // 由于进入这个判断, 一定是已经初始化过indexArray的各个层级
+                // (也就是说经过了起始索引阶段, 或又称之为, 完成了一次深度遍历),
                 // 所以不会和上一个判断 (起始索引判断) 冲突.
                 // 由于判断时, 我们已经处于下一层及, 所以想要获得上一层及的index 必须给dev + 1, 才能对应到相应的 index.
                 beginIndex = indexArray[indexArray.length - (div + 1)] + 1;
