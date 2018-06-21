@@ -75,6 +75,8 @@ public class NettyService {
         ChannelFuture future = serverBootstrap.bind().sync();
         future.channel().closeFuture().sync();
         eventLoopGroup.shutdownGracefully().sync();
+
+
     }
 
 }

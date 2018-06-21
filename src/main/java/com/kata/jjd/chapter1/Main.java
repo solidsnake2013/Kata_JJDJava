@@ -8,6 +8,8 @@ import jodd.io.FileUtil;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -61,6 +63,7 @@ public abstract class Main {
         System.out.println(spinWords("This is another test"));
         System.out.println(spinWords("This is a test"));
 
+
     }
 
     public static char findMissingLetter(char[] array) {
@@ -92,4 +95,9 @@ public abstract class Main {
         }
         return sb.delete(sb.length() - 1, sb.length()).toString();
     }
+
+
+
+
+
 }

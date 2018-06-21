@@ -64,6 +64,7 @@ public class NettyOiOService {
     public static class TestOutputChannelHandler extends ChannelOutboundHandlerAdapter {
         @Override
         public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
+
             System.out.println(ctx);
             super.write(ctx, msg, promise);
         }
